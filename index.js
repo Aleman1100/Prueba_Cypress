@@ -1,7 +1,7 @@
 // 1. Crear una API REST con el Framework Express (2 Puntos)
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser');
 const fs = require('fs')
