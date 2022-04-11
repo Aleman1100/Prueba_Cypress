@@ -1,0 +1,46 @@
+{{> encabezado }}
+<body>
+<h1>Skate Park</h1>
+
+<div class="py-4">
+    <h2>Registro</h2>
+    <hr class="w-50" />
+
+    <form action="/skater" method="POST" enctype="multipart/form-data">
+    <div class="form-group row w-50 m-auto">
+        <div class="form-group col-12 col-sm-6">
+        <label>Email</label>
+        <input name="email" class="form-control m-auto" />
+        </div>
+        <div class="form-group col-12 col-sm-6">
+        <label>Nombre</label>
+        <input name="nombre" class="form-control m-auto" />
+        </div>
+        <div class="form-group col-12 col-sm-6">
+        <label>Password</label>
+        <input name="password1" class="form-control m-auto" />
+        </div>
+        <div class="form-group col-12 col-sm-6">
+        <label>Repita la password</label>
+        <input name="password2" class="form-control m-auto" />
+        </div>
+        <div class="form-group col-12 col-sm-6">
+        <label>Años de experiencia</label>
+        <input name="experiencia" class="form-control m-auto" />
+        </div>
+        <div class="form-group col-12 col-sm-6">
+        <label>Especialidad</label>
+        <input name="especialidad" class="form-control m-auto" />
+        </div>
+        <div class="form-group col-12 col-sm-12">
+        <label>Foto de perfil</label>
+        <input type="file" name="foto_skater"/>
+        </div>
+    </div>
+    <button class="btn btn-info mb-3" type="submit"
+    >Registrarme</button>
+    <p><a href="http://localhost:3000/Login"> Iniciar sesión</a></p>
+    </form>
+</div>
+</body>
+

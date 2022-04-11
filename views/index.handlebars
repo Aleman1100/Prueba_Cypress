@@ -1,0 +1,60 @@
+{{> encabezado }}
+  <body>
+    <h1>Skate Park</h1>
+
+    <div class="py-4">
+      <h2>Lista de participantes</h2>
+
+      <hr />
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Años de experiencia</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+      </table>
+      <a href="http://localhost:3000/Login">Iniciar Sesión</a> |
+      <a href="http://localhost:3000/Registro">Registrarme</a>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+  let url = "http://localhost:3000/skater";
+  let tbody = document.getElementById("cuerpo");
+
+  let skaters = [];
+  window.onload = getData();
+
+  async function getData() {
+    await axios.get(url + "s").then((data) => {
+      skaters = data.data;
+      console.log(skaters);
+      tbody.innerHTML = "";
+      skaters.forEach((s, i) => {
+        if (s.estado == false) {
+          s.estado = 'En revision'
+        } else {
+          s.estado = 'Aprobado'
+        }
+        tbody.innerHTML += `
+        <tr>
+          <td scope="row">${i + 1}</td>
+          <td><div style="background-image: url('/img/foto-${s.email}.jpg')"></div></td>
+          <td>${s.nombre}</td>
+          <td>${s.anos_experiencia}</td>
+          <td>${s.especialidad}</td>
+          <td class="text-warning font-weight-bold">${s.estado}</td>
+        </tr>
+      `;
+      });
+    });
+  }
+</script>
+

@@ -1,0 +1,88 @@
+{{> encabezado }}
+  <body>
+    <h1>Skate Park</h1>
+
+    <div class="py-4">
+      <h2>Administración</h2>
+      <hr class="w-50" />
+
+      <table class="table w-50 m-auto">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Años de experiencia</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+      </table>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+  let url = "http://localhost:3000/skater";
+  let tbody = document.getElementById("cuerpo");
+
+  let skaters = [];
+  window.onload = getData();
+  async function checking() {
+    const validado = document.getElementsByTagName("input").value
+    if (validado == true ){
+
+    }
+  }
+
+  async function getData() {
+    await axios.get(url + "s").then((data) => {
+      skaters = data.data;
+      console.log(skaters);
+      tbody.innerHTML = "";
+      skaters.forEach((s, i) => {
+        if (s.estado == false) {
+          tbody.innerHTML += `
+          <tr>
+            <td scope="row">${i + 1}</td>
+            <td><div style="background-image: url('/img/foto-${s.email}.jpg')"></div></td>
+            <td>${s.nombre}</td>
+            <td>${s.anos_experiencia}</td>
+            <td>${s.especialidad}</td>
+            <td><input onclick="aprobacion('${s.email}',${s.estado})" type="checkbox" value="${s.estado}"/></td>
+          </tr>
+        `;
+        } else {
+          tbody.innerHTML += `
+          <tr>
+            <td scope="row">${i + 1}</td>
+            <td><div style="background-image: url('/img/foto-${s.email}.jpg')"></div></td>
+            <td>${s.nombre}</td>
+            <td>${s.anos_experiencia}</td>
+            <td>${s.especialidad}</td>
+            <td><input onclick="aprobacion('${s.email}',${s.estado})" type="checkbox" checked value="${s.estado}"/></td>
+          </tr>
+        `;
+        }
+      });
+    });
+  }
+
+  function aprobacion(email, estado) {
+    getData()
+    console.log('skaters '+ skaters);
+    console.log('email ' + email);
+    console.log('estado ' + estado);
+    estado = !estado
+    console.log('estado ' + estado);
+    axios
+      .put(url, {
+        email,
+        estado,
+      })
+      window.location.reload()
+      .then(() => {
+        console.log('accion')
+  })
+  }
+</script>
