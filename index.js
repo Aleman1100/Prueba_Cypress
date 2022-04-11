@@ -17,7 +17,9 @@ app.use( expressFileUpload({
     })
 );
 
-app.listen(3000, () => console.log('UP en 3000'))
+app.listen(port, () => {
+    console.log(`Up at http://localhost:${port}`)
+})
 
 // 2. Servir contenido dinámico con express-handlebars (1 Punto)
 app.use(express.static("assets"));
