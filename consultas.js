@@ -1,10 +1,9 @@
 const { Pool } = require('pg');
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    password: '',
-    database: 'skatepark',
-    port: 5432
+    connectionString: process.env.DATABASE_URL,
+        ssl: {
+        rejectUnauthorized: false
+        }
 });
 
 async function nuevoSkater(email,nombre,pass,exp,esp,img){
