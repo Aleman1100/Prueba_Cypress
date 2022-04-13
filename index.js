@@ -212,6 +212,9 @@ app.delete('/skater/:email', async (req, res) => {
     });
     };
     console.log(`Skater ${email} eliminado del JSON`)
+    res.render('login', {
+            layout: 'login',
+        });
 });
 
 // Fin rutas para cada vista
