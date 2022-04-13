@@ -59,7 +59,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 <script>
-  let url = "http://localhost:3000/skater";
+  let url = "https://alejandro-prueba.herokuapp.com/skater";
   const token = "{{ token }}"
   const email = "{{ email }}"
   const nombre = "{{ nombre }}"
@@ -84,7 +84,7 @@
   function eliminarSkater() {
     axios.delete(url + "/" + email).then(() => {
       alert(`Usuario ${email} eliminado con exito`);
-      location.replace("http://localhost:3000/Login")
+      location.replace("https://alejandro-prueba.herokuapp.com/Login")
     });
   }
 </script>
