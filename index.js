@@ -86,7 +86,7 @@ app.get('/SignIn', async (req, res) => {
             secretKey
         );
         res.send(`
-        <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=http://localhost:3000/Datos?token=${token}">
+        <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=https://alejandro-prueba.herokuapp.com/Datos?token=${token}">
         Skater ${email}.
         <script>
         sessionStorage.setItem('token', JSON.stringify('${token}'))
